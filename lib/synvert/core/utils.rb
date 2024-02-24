@@ -40,7 +40,7 @@ module Synvert::Core
           ignored_files = []
 
           if Configuration.respect_gitignore
-            Open3.popen3('git check-ignore --stdin') do |stdin, stdout, stderr, wait_thr|
+            Open3.popen3('git check-ignore --stdin') do |stdin, stdout, _stderr, _wait_thr|
               stdin.puts(all_files.join("\n"))
               stdin.close
 
