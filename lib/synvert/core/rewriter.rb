@@ -202,7 +202,12 @@ module Synvert::Core
     # @option strategy [String] 'allow_insert_at_same_position'
     def configure(options)
       @options = @options.merge(options)
-      if options[:parser] && ![Synvert::PARSER_PARSER, Synvert::SYNTAX_TREE_PARSER, Synvert::PRISM_PARSER].include?(options[:parser])
+      if options[:parser] && ![
+        Synvert::PARSER_PARSER,
+        Synvert::SYNTAX_TREE_PARSER,
+        Synvert::PRISM_PARSER
+      ].include?(options[:parser])
+
         raise Errors::ParserNotSupported.new("Parser #{options[:parser]} not supported")
       end
     end

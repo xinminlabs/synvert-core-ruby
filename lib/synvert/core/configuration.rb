@@ -111,10 +111,11 @@ module Synvert::Core
       #     # Code to be executed with temporary configurations
       #   end
       def with_temporary_configurations(configurations, &block)
-        old_instance_variables = instance_variables.reduce({}) do |hash, var|
-          hash[var] = instance_variable_get(var)
-          hash
-        end
+        old_instance_variables =
+          instance_variables.reduce({}) do |hash, var|
+            hash[var] = instance_variable_get(var)
+            hash
+          end
 
         configurations.each do |variable, value|
           instance_variable_set("@#{variable}", value)
